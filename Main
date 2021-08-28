@@ -1,0 +1,127 @@
+package orbital;
+
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
+import java.util.Scanner;
+
+
+public class Orbital {
+	public static void main(String args[]) {
+		ArrayList list = new ArrayList();
+		System.out.println("Choose one of the options below :\n(Write\"1\" for 1)");
+		list.add("1- Give me a lucky number.");
+		list.add("2- Do maths for me.");
+		list.add("3- Tell me a joke.");
+		list.add("4- Tell me the date.");
+		list.add("5- Create chart");
+		
+		// list materials should be added in here.
+		LuckyNumber ln = new LuckyNumber();
+		for (int i = 0; i < list.size() ; i++) { // Loop for all list materials.
+			System.out.println(list.get(i));
+		}
+		Scanner scan = new Scanner(System.in);
+		int answer = scan.nextInt();
+		switch(answer) {
+		case 1 : ln.setLuckyNumber(ln.rand.nextInt(10));
+				 ln.getLuckyNumber();
+				 break;
+		case 2 :
+			Maths maths = new Maths();
+			System.out.println("Choose what do you want to do : ");
+			ArrayList mathlist = new ArrayList();
+			mathlist.add("1 - Sum");
+			mathlist.add("2 - Subtract");
+			mathlist.add("3 - Multiplication");
+			mathlist.add("4 - Division");
+			mathlist.add("5 - Powers of numbers");
+			mathlist.add("6 - Remaining number");
+			for (int i = 0; i < mathlist.size(); i++) {
+				System.out.println(mathlist.get(i));
+			}
+			int mathsanswer = scan.nextInt();
+			switch(mathsanswer) {
+			case 1 : 
+				System.out.println("Enter the first and second value for sum.");
+				int first = scan.nextInt();
+				int second = scan.nextInt();
+				System.out.println(maths.Sum(first, second));
+				break;
+			case 2 :
+				System.out.println("Enter the first and second value for subtract.");
+				int first1 = scan.nextInt();
+				int second1 = scan.nextInt();
+				System.out.println(maths.Subtract(first1, second1));
+				break;
+			case 3 :
+				System.out.println("Enter the first and second value for multiplication.");
+				int first2 = scan.nextInt();
+				int second2 = scan.nextInt();
+				System.out.println(maths.Multiplication(first2, second2));
+				break;
+			case 4 :
+				System.out.println("Enter the first and second value for division.");
+				int first3 = scan.nextInt();
+				int second3 = scan.nextInt();
+				System.out.println(maths.Division(first3, second3));
+				break;
+			case 5 :
+				System.out.println("Enter number and power of it for finding power of the number.");
+				int first4 = scan.nextInt();
+				int second4 = scan.nextInt();
+				System.out.println(Math.pow(first4, second4));
+				break;
+			case 6 :
+				System.out.println("Enter the first and second value for division to find remaining value.");
+				int first5 = scan.nextInt();
+				int second5 = scan.nextInt();
+				System.out.println(first5%second5);
+				break;
+			default :
+				System.out.println("Sorry, you entered a number which is not on the list.");	
+			}
+			break;
+		case 3 :
+			Jokes jokes = new Jokes();
+			jokes.jokes.add("One joke, coming up! What is a sea monster’s favorite snack? Ships and dip.");
+			jokes.jokes.add("This might make you laugh. How do robots eat guacamole? With computer chips.");
+			jokes.jokes.add("Why don't eggs tell jokes ? They'd crack each other up.");
+			jokes.jokes.add("What do dentists call their x-rays? Tooth pics!");
+			jokes.jokes.add("Did you hear about the first restaurant to open on the moon?\nIt had great food, but no atmosphere.");
+			jokes.jokes.add("What did one ocean say to the other ocean?\nNothing, it just waved.");
+			jokes.jokes.add("Do you want to hear a construction joke?\nSorry, I’m still working on it.");
+			jokes.jokes.add("Why is Peter Pan always flying?\nBecause he Neverlands.");
+			jokes.jokes.add("What’s the best thing about Switzerland?\nI don’t know, but the flag is a big plus.");
+			jokes.jokes.add("Where should you go in the room if you’re feeling cold?\nThe corner—they’re usually 90 degrees.");
+			jokes.jokes.add("Someone stole my Microsoft Office and they’re gonna pay.\nYou have my Word.");
+			jokes.jokes.add("Why didn’t the skeleton go to the dance?\nBecause he had no body to go with.");
+			jokes.jokes.add("What time is it when the clock strikes 13?\nTime to get a new clock.");
+			jokes.jokes.add("What did one volcano say to the other?\nI lava you.");
+			jokes.jokes.add("Why did the student eat his homework?\nBecause the teacher told him it was a piece of cake.");
+			jokes.jokes.add("Why is six afraid of seven?\nBecause seven eight nine.");
+			
+			
+			Random random = new Random();
+			System.out.println(jokes.jokes.get(random.nextInt(jokes.jokes.size())));
+			break;
+		case 4 :
+			Date currentDate = new Date();
+			System.out.println(currentDate);
+			break;
+		case 5 :
+			  Chart chart = new Chart();
+			  System.out.println("Enter amount of lines for chart : ");
+			  int x = scan.nextInt();
+			  System.out.println("Enter amount of columns for chart : ");
+			  int y = scan.nextInt();
+			  chart.CreateChart(x, y);
+	          break;
+			
+				 
+		default : System.out.println("Sorry, you entered a number which is not on the list.");
+		}
+		
+	}
+}
